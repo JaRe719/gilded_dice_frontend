@@ -1,0 +1,20 @@
+.avatarChoice{
+    width: 100px;
+    height: 200px;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+  }
+  
+
+  
+  /* .selectedAvatar img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+  } */
+  

@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
     const storedToken = sessionStorage.getItem("token");
 
     if (storedToken) {
-      fetch(import.meta.env.BACKEND + "/api/v1/protectRoute", {
+      fetch(`${process.env.REACT_APP_BACKEND}/api/v1/protectRoute`, {
         headers: {
           Authorization: "Bearer " + token,
         },
