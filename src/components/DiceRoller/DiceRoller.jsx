@@ -12,7 +12,14 @@ const DiceResults = new DisplayResults("#dice-box");
 
 let diceInitialized = false;
 
-Dice.init().then(() => {
+Dice.init({
+    bounds: {
+      x: [-20, 20], // X-Axis limits
+      y: [-20, 20], // Y-Axis limits
+      z: [0, 20], // Z-Axis limits (prevent falling out)
+    },
+    
+  }).then(() => {
   if (!diceInitialized) {
     diceInitialized = true;
 
