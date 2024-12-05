@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
     const [email, setEmail] = useState("");
-    const [userName, setUserName] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [emailValidation, setEmailValidation] = useState(true);
@@ -54,11 +54,11 @@ export default function Register() {
 
     async function signup(event) {
         event.preventDefault();
-        const registrationData = { email, password, userName};
+        const registrationData = { email, username: username, password };
         setLoading(true);
         try {
             const response = await fetch(
-                import.meta.env.BACKEND + "/api/v1/auth/signUp",
+                `${process.env.REACT_APP_BACKEND}/api/v1/auth/register`,
                 {
                     method: "POST",
                     headers: {
@@ -104,7 +104,7 @@ export default function Register() {
                         Nutzername
                     </label>
                     <input
-                        onChange={(e) => setUserName(e.target.value)}
+                        onChange={(e) => setUsername(e.target.value)}
                         type="text"
                         id="userName"
                         required
@@ -139,7 +139,7 @@ export default function Register() {
                     type="submit"
                     disabled={
                         isValid ||
-                        !userName ||
+                        !username ||
                         !email ||
                         !emailValidation
                     }

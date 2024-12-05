@@ -20,7 +20,7 @@ export default function LogIn() {
         const encoded = btoa(email + ":" + password);
         try {
             const response = await fetch(
-                import.meta.env.BACKEND + "/api/v1/auth/login",
+                `${process.env.REACT_APP_BACKEND}/api/v1/auth/login`,
                 {
                     method: "POST",
                     headers: {
