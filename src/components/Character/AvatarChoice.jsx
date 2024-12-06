@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./AvatarChoice.css";
-import {getAvatarPaths} from "../../utils/AvatarProvider";
 
-export default function AvatarChoice() {
-    const avatars = getAvatarPaths();
-    console.log(avatars);
-    
 
-    const [selectedAvatar, setSelectedAvatar] = useState(avatars[0]);
-    const [currentAvatar, setCurrentAvatar] = useState(0);
+export default function AvatarChoice({selectedAvatar, setSelectedAvatar, avatars}) {
+  
+    const [currentAvatar, setCurrentAvatar] = useState(selectedAvatar);
+    console.log("currentAvatar: " + currentAvatar)
     const totalAvatars = 12;
 
     const nextAvatar = () => {
@@ -20,8 +17,12 @@ export default function AvatarChoice() {
     }
 
     const chooseAvatar = () => {
-        setSelectedAvatar(avatars[currentAvatar]);
+        setSelectedAvatar(currentAvatar);
     }
+
+    useEffect(()=>{
+        setCurrentAvatar(selectedAvatar)
+    },[selectedAvatar])
 
     console.log("selectedAvatar: " + selectedAvatar)
   

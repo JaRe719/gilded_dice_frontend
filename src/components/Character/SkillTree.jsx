@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import "./SkillTree.css";
 
-export default function SkillTree() {
+export default function SkillTree({intelligence, setIntelligence, negotiate, setNegotiate, ability, setAbility, planning, setPlanning, stamina, setStamina}) {
 
-    const [intelligence, setIntelligence] = useState(0);
-    const [negotiate, setNegotiate] = useState(0);
-    const [ability, setAbility] = useState(0);
-    const [planning, setPlanning] = useState(0);
-    const [stamina, setStamina] = useState(0);
+   
 
     const [remainingSkillPoints, setRemainingSkillPoints] = useState();
     const skillPoints = 8;
