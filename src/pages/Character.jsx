@@ -5,15 +5,50 @@ import { getAvatarPaths } from '../utils/AvatarProvider';
 
 export default function Character() {
 
+    const [isLoading, setIsLoading] = useState(true);
+    const [isGetCharDone, setIsGetCharDone] = useState(false);
+
     const [token, setToken] = useState("");
 
-    useEffect(()=>{
-        setToken(sessionStorage.getItem("token"))
-    },[])
+    useEffect(() => {
+        const tokenFromStorage = sessionStorage.getItem("token");
+        if (tokenFromStorage) {
+            setToken(tokenFromStorage);
+        }
+        setIsLoading(false);
+    }, []);
 
     const avatars = getAvatarPaths();
     console.log(avatars);
-    const [selectedAvatar, setSelectedAvatar] = useState(avatars[0]);
+    const [selectedAvatar, setSelectedAvatar] = useState(0);
+
+    const [charDetails, setCharDetails] = useState(null)
+
+    useEffect(()=>{
+        if(!isLoading && token){
+        fetch(`${process.env.REACT_APP_BACKEND}/api/v1/char`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                setCharDetails(null);
+            }
+        })
+        .then(data =>{
+            setCharDetails(data);
+            console.log("data: " + JSON.stringify(data));
+            setIsGetCharDone(true);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    }},[token, isLoading])
 
     const [intelligence, setIntelligence] = useState(0);
     const [negotiate, setNegotiate] = useState(0);
@@ -23,9 +58,20 @@ export default function Character() {
 
     const [saveMessage, setSaveMessage] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         setSaveMessage(null);
-    },[])
+    
+        if (charDetails) {
+            setIntelligence(parseInt(charDetails.intelligence) || 0);
+            setNegotiate(parseInt(charDetails.negotiate) || 0);
+            setAbility(parseInt(charDetails.ability) || 0);
+            setPlanning(parseInt(charDetails.planning) || 0);
+            setStamina(parseInt(charDetails.stamina) || 0);
+            setSelectedAvatar(parseInt(charDetails.avatar) || 0)
+        }
+    }, [charDetails, isGetCharDone]);
+
+    console.log("charDetails: " +charDetails)
 
     const saveHandler = (e)=>{
         e.preventDefault();
@@ -38,6 +84,8 @@ export default function Character() {
             stamina: stamina,
             avatar: selectedAvatar   
         };
+
+        console.log(characterData)
     
         fetch(`${process.env.REACT_APP_BACKEND}/api/v1/char`, {
             method: "POST",
