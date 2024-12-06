@@ -22,7 +22,7 @@ export default function Character() {
     console.log(avatars);
     const [selectedAvatar, setSelectedAvatar] = useState(0);
 
-    const [charDetails, setCharDetails] = useState(null)
+    const [charDetails, setCharDetails] = useState(null);
 
     useEffect(()=>{
         if(!isLoading && token){
@@ -48,7 +48,7 @@ export default function Character() {
         .catch(error => {
             console.error("Error:", error);
         });
-    }},[token, isLoading])
+    }},[token, isLoading]);
 
     const [intelligence, setIntelligence] = useState(0);
     const [negotiate, setNegotiate] = useState(0);
@@ -71,8 +71,6 @@ export default function Character() {
         }
     }, [charDetails, isGetCharDone]);
 
-    console.log("charDetails: " +charDetails)
-
     const saveHandler = (e)=>{
         e.preventDefault();
     
@@ -84,8 +82,6 @@ export default function Character() {
             stamina: stamina,
             avatar: selectedAvatar   
         };
-
-        console.log(characterData)
     
         fetch(`${process.env.REACT_APP_BACKEND}/api/v1/char`, {
             method: "POST",
@@ -119,4 +115,4 @@ export default function Character() {
         {saveMessage && <p>{saveMessage}</p>}
     </div>
   )
-}
+};
