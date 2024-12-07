@@ -8,6 +8,7 @@ import Login from "./pages/Login.jsx"
 import Register from "./pages/Register.jsx";
 import ProtectedRouteUser from './utils/ProtectedRouteUser.jsx';
 import Character from './pages/Character.jsx';
+import GamePlay from './pages/GamePlay.jsx';
 
 function App() {
 
@@ -44,6 +45,10 @@ function App() {
               path: "character",
               element: <Character />,
           },
+          {
+            path: "gameplay",
+            element: <GamePlay />,
+        },
       ],
   },
     

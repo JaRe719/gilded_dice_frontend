@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import AvatarChoice from '../components/Character/AvatarChoice';
 import SkillTree from '../components/Character/SkillTree';
 import { getAvatarPaths } from '../utils/AvatarProvider';
+import { useNavigate } from 'react-router-dom';
 
 export default function Character() {
+
+    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(true);
     const [isGetCharDone, setIsGetCharDone] = useState(false);
@@ -113,6 +116,8 @@ export default function Character() {
       <button onClick={saveHandler}>Speichern</button>
 
         {saveMessage && <p>{saveMessage}</p>}
+
+        <button onClick={()=>navigate("/home")}>Zurück</button>
     </div>
   )
 };
