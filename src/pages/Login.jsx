@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 
@@ -8,6 +8,10 @@ export default function LogIn() {
     const [password, setPassword] = useState("");
     const { login } = useAuth();
     const [error, setError] = useState("");
+
+    useEffect(()=>{
+        sessionStorage.removeItem("token");
+    }, [])
 
     async function loginFunction(event) {
         event.preventDefault();
@@ -83,7 +87,7 @@ export default function LogIn() {
                 <p>{error}</p>
 
                 <div>
-                    <Link to="/signup">Kein Konto? Hier registrieren</Link>
+                    <Link to="/register">Kein Konto? Hier registrieren</Link>
                 </div>
                 {/* <button type="submit">
                     Password vergessen?
