@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Landing.css";
-import Character from './Character';
 import { useNavigate } from 'react-router-dom';
 
 
