@@ -14,9 +14,9 @@ let diceInitialized = false;
 
 Dice.init({
     bounds: {
-      x: [-20, 20], // X-Axis limits
-      y: [-20, 20], // Y-Axis limits
-      z: [0, 20], // Z-Axis limits (prevent falling out)
+      x: [-20, 20],
+      y: [-20, 20],
+      z: [0, 20], 
     },
     
   }).then(() => {
@@ -35,28 +35,24 @@ Dice.init({
 });
 
 
-export default function DiceRoller() {
+export default function DiceRoller(props) {
 
     Dice.onRollComplete = (results) => {
         console.log(results);
     
         const finalResults = DRP.parseFinalResults(results);
+
+        console.log('results:', results); 
+console.log('finalResults:', finalResults.value);
     
         // show the results
         // DiceResults.showResults(finalResults);
     
-        // Additional calculation: Skill, Bonus, Malus
-        const skill = 5; // Example skill value
-        const bonus = 3; // Example bonus value
-        const malus = 2; // Example malus value
-    
-        const adjustedResult = finalResults.value + skill + bonus - malus;
-        console.log("Adjusted Result:", adjustedResult);
-    
         const resultDisplay = document.getElementById("result-display");
         if (resultDisplay) {
-          resultDisplay.textContent = `Final Result: ${adjustedResult}`;
+          resultDisplay.textContent = `Dein Würfelergebnis: ${finalResults.value}`;
         }
+        props.setDiceResult(finalResults.value);
       };
     
      
@@ -68,14 +64,11 @@ export default function DiceRoller() {
   return (
     <div id='dice'>
        <div id="result-display" style={{ margin: "20px 0", fontWeight: "bold" }}>
-        {/* Result will be displayed here */}
+        
       </div>
       <div className="buttonList">
-        <span className="header">Roll Action</span>
-        <span className="header">Notation</span>
-        <span className="header">Explanation</span>
         <AdvRollBtn
-          label="Roll d20"
+          label="Würfle"
           notation="1d20"
           onRoll={rollDice}
         />

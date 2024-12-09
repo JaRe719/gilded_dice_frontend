@@ -1,0 +1,11 @@
+.diceField{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+
+    button{
+        z-index: 9;
+    }
+}

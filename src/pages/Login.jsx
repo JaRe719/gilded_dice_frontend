@@ -9,9 +9,9 @@ export default function LogIn() {
     const { login } = useAuth();
     const [error, setError] = useState("");
 
-    useEffect(()=>{
-        sessionStorage.removeItem("token");
-    }, [])
+    // useEffect(()=>{
+    //     sessionStorage.removeItem("token");
+    // }, [])
 
     async function loginFunction(event) {
         event.preventDefault();
