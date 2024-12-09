@@ -1,4 +1,5 @@
 import React from 'react';
+import "./GameOptions.css";
 import GameOptionCard from './GameOptionCard';
 
 export default function GameOptions(props) {
@@ -13,7 +14,7 @@ export default function GameOptions(props) {
   
 
   return (
-    <div>
+    <div className='gameOption'>
       <h1>Wähle eine Option aus den folgenden</h1>
       {props.options.map((option, index)=>{
         return(
@@ -22,10 +23,12 @@ export default function GameOptions(props) {
       })}
 
       {props.isSkipable &&
-        <div >
+        <div className='gameOptionCard'>
         <h2>Überspringen</h2>
         <button
-          onClick={()=> props.setPhaseOfPhase(1)}
+          onClick={()=> {
+            props.setPhaseOfPhase(1);
+            props.handleNewPhase()}}
         >
          Auswählen
         </button>
