@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Logging.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 
@@ -53,9 +54,9 @@ export default function LogIn() {
     }
 
     return (
-        <section>
+        <section className="login">
             <form onSubmit={loginFunction}>
-                <h2>Login</h2>
+                <h1>Login</h1>
                 <div>
                     <label htmlFor="email">
                         Email
@@ -64,6 +65,7 @@ export default function LogIn() {
                         onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         id="email"
+                        placeholder="z.B. max@mustermann.de"
                         required
                     />
                 </div>
@@ -75,6 +77,7 @@ export default function LogIn() {
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         id="password"
+                        placeholder="z.B. Password_123"
                         required
                     />
                 </div>
@@ -84,9 +87,9 @@ export default function LogIn() {
                 >
                     Anmelden
                 </button>
-                <p>{error}</p>
+                <p className="errorMessage">{error}</p>
 
-                <div>
+                <div className="switchLogger">
                     <Link to="/register">Kein Konto? Hier registrieren</Link>
                 </div>
                 {/* <button type="submit">
