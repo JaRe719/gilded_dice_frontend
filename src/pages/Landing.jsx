@@ -9,7 +9,6 @@ export default function Landing() {
 
   return (
     <div className='landing'>
-      Landing Page
     
     <h1>Willkommen Abenteurer, bist du bereit für deine nächste Reise?</h1>
 

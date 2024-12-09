@@ -92,7 +92,7 @@ export default function GamePlay() {
             setIsSkipable(false);
         };
 
-        if(phaseDetails?.category === "MAIN"){
+        if(phaseDetails?.category === "MAINX"){
             setIsReturning(true);
         } else{
             setIsReturning(false);
