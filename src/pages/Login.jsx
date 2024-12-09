@@ -9,6 +9,10 @@ export default function LogIn() {
     const { login } = useAuth();
     const [error, setError] = useState("");
 
+    // useEffect(()=>{
+    //     sessionStorage.removeItem("token");
+    // }, [])
+
     async function loginFunction(event) {
         event.preventDefault();
         setError("");
@@ -83,7 +87,7 @@ export default function LogIn() {
                 <p>{error}</p>
 
                 <div>
-                    <Link to="/signup">Kein Konto? Hier registrieren</Link>
+                    <Link to="/register">Kein Konto? Hier registrieren</Link>
                 </div>
                 {/* <button type="submit">
                     Password vergessen?

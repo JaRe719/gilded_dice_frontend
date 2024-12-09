@@ -14,7 +14,9 @@ export default function Register() {
 
     const navigate = useNavigate();
 
-    
+    useEffect(()=>{
+        sessionStorage.removeItem("token");
+    }, [])
 
     useEffect(() => {
         if (password !== confirmPassword) {
