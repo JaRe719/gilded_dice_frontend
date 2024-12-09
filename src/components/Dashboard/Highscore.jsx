@@ -1,10 +1,10 @@
 import React from 'react';
-import "./Highscore.css";
+import "./Dashboard.css";
 
 export default function Highscore({list}) {
 
   return (
-    <div>
+    <div className='highscores'>
       <div>
         <h3>Spieler</h3>
         <h3>Highscore</h3>
