@@ -1,0 +1,49 @@
+.progress-container {
+    position: relative;
+    width: 20%; /* Die Breite des Fortschrittsbalkens */
+    display: inline-block;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    right: 0;
+    appearance: none;
+    direction: rtl;
+    border: 1px solid grey;
+    border-radius: 5px;
+
+}
+
+.progressPos::-webkit-progress-bar {
+    background: linear-gradient(to right, green, yellow, red); 
+    border-radius: 5px;
+    
+}
+
+.progressNeg::-webkit-progress-bar {
+    background: linear-gradient(to right, red, yellow, green); 
+    border-radius: 5px;
+    
+}
+
+progress::-webkit-progress-value {
+    background-color: #fff; /* Fortschrittsfarbe */
+    border-radius: 0 5px 5px 0;
+}
+
+progress::-moz-progress-bar {
+    background-color: #fff; /* Fortschrittsfarbe für Firefox */
+}
+
+/* Text über dem Balken */
+.progress-label {
+    /* position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0); Zentriert den Text horizontal */
+    font-size: 0.5rem;
+    color: #000; /* Farbe des Textes */
+    font-weight: bold;
+    pointer-events: none; /* Der Text blockiert keine Klicks */
+}
