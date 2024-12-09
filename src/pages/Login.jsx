@@ -45,7 +45,7 @@ export default function LogIn() {
 
             const data = await response.json();
             console.log(data);
-            login(data.token);
+             await login(data.token);
             navigate("/home");
         } catch (error) {
             console.error("Error:", error.message);
