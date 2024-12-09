@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingElement from '../LoadingElement/LoadingElement';
 import GameAvatarBox from './GameAvatarBox';
 import DiceRoller from '../DiceRoller/DiceRoller';
+import { getAvatarPaths } from '../../utils/AvatarProvider';
 
 export default function GameDialog(props) {
 
@@ -124,7 +125,9 @@ if(token){
 //     setDiceResult(result);
 // };
 
-console.log("dialogPhase: " + dialogPhase)
+console.log("dialogPhase: " + dialogPhase);
+
+const avatars = getAvatarPaths(); 
 
   return (
     <div>
@@ -138,16 +141,16 @@ console.log("dialogPhase: " + dialogPhase)
         setDialogPhase(dialogPhase+1)
         }
       }}>
-        <GameAvatarBox avatar={chosenOptionDetails.npcFileName} name={chosenOptionDetails.npcName} />
+        <GameAvatarBox avatar={chosenOptionDetails?.npcFilename} name={chosenOptionDetails.npcName} />
         {dialogPhase===1?
           <div>
-            <p>{chosenOptionDetails.startMessage}</p>
+            <p>{chosenOptionDetails?.startMessage}</p>
           </div>
         : dialogPhase === 4 && isLoading ?
           <LoadingElement /> 
           : dialogPhase === 4 && !isLoading && optionResult && diceRollDone ?
           <div>
-           <p>{optionResult.endMessage}</p>
+           <p>{optionResult?.endMessage}</p>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -172,7 +175,7 @@ console.log("dialogPhase: " + dialogPhase)
           </div>
           : ""
         }
-        <GameAvatarBox avatar={props.avatar} name={props.username} />
+        <GameAvatarBox avatar={avatars[props.avatar]} name={props.username ? props.username : "Du"} />
         {props.isInvest && showInvest &&
         <div>
           <p>Wie viel möchtest du investieren?</p>

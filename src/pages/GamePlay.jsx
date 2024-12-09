@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./GamePlay.css";
 import LoadingElement from '../components/LoadingElement/LoadingElement';
 import GamePhaseIntro from '../components/GamePlay/GamePhaseIntro';
 import GameOptions from '../components/GamePlay/GameOptions';
@@ -26,9 +27,6 @@ export default function GamePlay() {
     const [chosenOption, setChosenOption] = useState(null);
     const [isReturning, setIsReturning] = useState(false);
     const [isSkipable, setIsSkipable] = useState(false);
-
-   
-   
 
     const [phaseOfPhase, setPhaseOfPhase] = useState(null);
 
@@ -150,7 +148,7 @@ export default function GamePlay() {
 console.log("phaseOfPhase" + phaseOfPhase );
 console.log("phaseDetails" + phaseDetails);
   return (
-    <div>
+    <div className='gamePlay'>
       <Scales health={charDetails?.healthLvl} stress={charDetails?.stressLvl} satisfaction={charDetails?.satisfactionLvl} />
       <Money income={moneyDetails?.income} outcome={moneyDetails?.outcome} money={moneyDetails?.money} invest={moneyDetails?.invest} />
 
@@ -158,10 +156,10 @@ console.log("phaseDetails" + phaseDetails);
       {isLoading && <LoadingElement />}
 
       
-      {!phaseOfPhase && <button onClick={handleNewPhase}>Los geht's</button>}
+      {!phaseOfPhase && <button className='startButtonGameplay' onClick={handleNewPhase}>Los geht's</button>}
 
       {phaseOfPhase === 1 && phaseDetails && <GamePhaseIntro intro={phaseDetails?.intro} setChosenOption={setChosenOption} setPhaseOfPhase={setPhaseOfPhase}/>}
-      {phaseOfPhase === 2 && phaseDetails && options && <GameOptions setChosenOption={setChosenOption} phaseDetails={phaseDetails} options={options} setOptions={setOptions} setPhaseOfPhase={setPhaseOfPhase} money={moneyDetails?.money} isSkipable={isSkipable} isReturning={isReturning} />}
+      {phaseOfPhase === 2 && phaseDetails && options && <GameOptions driverLicense={charDetails?.driverLicense} setChosenOption={setChosenOption} phaseDetails={phaseDetails} options={options} setOptions={setOptions} setPhaseOfPhase={setPhaseOfPhase} money={moneyDetails?.money} isSkipable={isSkipable} isReturning={isReturning} />}
       {phaseOfPhase === 3 && phaseDetails && <GameDialog chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} avatar={charDetails?.avatar} lastPhase={phaseDetails?.gameEnd} isReturning={isReturning} handleNewPhase={handleNewPhase}/>}
       {/* {phaseOfPhase === 4 && <GamePhaseOutro chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} />} */}
       {phaseOfPhase === 5 && phaseDetails && <GameEnd chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} />}

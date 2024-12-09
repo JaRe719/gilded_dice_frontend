@@ -1,7 +1,11 @@
 import React from 'react';
 
 
+
 export default function GameAvatarBox(props) {
+  console.log("Avatar: "+ props.avatar);
+  
+
   return (
     <div>
         <div>

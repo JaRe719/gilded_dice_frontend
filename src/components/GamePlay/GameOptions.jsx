@@ -17,7 +17,7 @@ export default function GameOptions(props) {
       <h1>Wähle eine Option aus den folgenden</h1>
       {props.options.map((option, index)=>{
         return(
-          <GameOptionCard key={index} option={option} options={props.options} setOptions={props.setOptions} money={props.money} setChosenOption={props.setChosenOption} setPhaseOfPhase={props.setPhaseOfPhase} isReturning={props.isReturning}/>
+          <GameOptionCard key={index} driverLicense={props.driverLicense} option={option} options={props.options} setOptions={props.setOptions} money={props.money} setChosenOption={props.setChosenOption} setPhaseOfPhase={props.setPhaseOfPhase} isReturning={props.isReturning}/>
         )
       })}
 
