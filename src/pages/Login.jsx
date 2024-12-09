@@ -44,9 +44,8 @@ export default function LogIn() {
             }
 
             const data = await response.json();
-            await sessionStorage.setItem("token", data.token);
             await login(data.token);
-            await navigate("/home");
+            navigate("/home");
         } catch (error) {
             console.error("Error:", error.message);
             setError(error.message);
@@ -91,7 +90,6 @@ export default function LogIn() {
 
                 <div className="switchLogger">
                     <Link to="/register">Kein Konto? Hier registrieren</Link>
-                    <Link to="/home"> Angemeldet geklickt aber es passiert nichts? Klick hier</Link>
                 </div>
                 {/* <button type="submit">
                     Password vergessen?
