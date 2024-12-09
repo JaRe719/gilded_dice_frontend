@@ -1,0 +1,32 @@
+.characterPage{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    h1{
+        font-size: 1.6rem;
+        width: 70%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+.buttonWrapperChar{
+    display: flex;
+    width: 60%;
+    margin: 10px auto;
+
+    button{
+        width: 20%;
+  font-size: 1rem;
+  padding: 10px;
+  background: linear-gradient(to bottom right , #6F909F, #435B65, #2F3F46);
+  border: none;
+  border-radius: 20px;
+  color: #F1F3F4;
+  margin: 0 auto;
+    }
+}

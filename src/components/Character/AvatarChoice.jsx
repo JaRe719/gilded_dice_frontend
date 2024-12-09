@@ -27,16 +27,18 @@ export default function AvatarChoice({selectedAvatar, setSelectedAvatar, avatars
     console.log("selectedAvatar: " + selectedAvatar)
   
     return (
-    <div>
-        <button onClick={previousAvatar}>Prev</button>
+    <div className='avatarWrapper'>
+        <div className='avatarChoiceWrapper'>
+        <button onClick={previousAvatar}>Vorheriges</button>
 
         <div className='avatarChoice'>
             <img src={avatars[currentAvatar]} alt={"Avatar" + currentAvatar} />
         </div>
 
 
-        <button onClick={nextAvatar}>Next</button>
-        <button onClick={chooseAvatar}>Auswählen</button>
+        <button onClick={nextAvatar}>Nächstes</button>
+        </div>
+        <button className="choiceButton" onClick={chooseAvatar}>Auswählen</button>
     </div>
   )
 };

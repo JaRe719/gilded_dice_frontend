@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./Character.css";
 import AvatarChoice from '../components/Character/AvatarChoice';
 import SkillTree from '../components/Character/SkillTree';
 import { getAvatarPaths } from '../utils/AvatarProvider';
@@ -107,17 +108,19 @@ export default function Character() {
     }
 
   return (
-    <div>
+    <div className='characterPage'>
         <h1>Dein Held, deine Entscheidungen – Bearbeite oder erstelle deinen Charakter!</h1>
 
       <AvatarChoice selectedAvatar={selectedAvatar} setSelectedAvatar={setSelectedAvatar} avatars={avatars}/>
       <SkillTree intelligence={intelligence} setIntelligence={setIntelligence} negotiate={negotiate} setNegotiate={setNegotiate} ability={ability} setAbility={setAbility} planning={planning} setPlanning={setPlanning} stamina={stamina} setStamina={setStamina}/>
 
-      <button onClick={saveHandler}>Speichern</button>
+        <div className='buttonWrapperChar'>
+            <button onClick={saveHandler}>Speichern</button>
 
-        {saveMessage && <p>{saveMessage}</p>}
+            {saveMessage && <p>{saveMessage}</p>}
 
-        <button onClick={()=>navigate("/home")}>Zurück</button>
+            <button onClick={()=>navigate("/home")}>Zurück</button>
+        </div>
     </div>
   )
 };
