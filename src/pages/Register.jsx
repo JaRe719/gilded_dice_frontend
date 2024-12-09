@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Logging.css";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -82,14 +83,14 @@ export default function Register() {
     }
 
     return (
-        <section >
+        <section className="register" >
             <form
                 onSubmit={signup}
                 
             >
-                <h2 >
-                    Neues Konto registrieren
-                </h2>
+                <h1 >
+                    Registrieren
+                </h1>
                 <div >
                     <label htmlFor="email">
                         Email
@@ -98,6 +99,7 @@ export default function Register() {
                         onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         id="email"
+                        placeholder="z.B. max@mustermann.de"
                         required
                     />
                 </div>
@@ -109,6 +111,7 @@ export default function Register() {
                         onChange={(e) => setUsername(e.target.value)}
                         type="text"
                         id="userName"
+                        placeholder="z.B. Player1"
                         required
                     />
                 </div>
@@ -121,6 +124,7 @@ export default function Register() {
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         id="password"
+                        placeholder="z.B. Password_123"
                         required
                     />
                 </div>
@@ -134,6 +138,7 @@ export default function Register() {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         type="password"
                         id="confirmPassword"
+                        placeholder="z.B. Password_123"
                         required
                     />
                 </div>
@@ -152,13 +157,13 @@ export default function Register() {
                         "Registrieren"
                     )}
                 </button>
-                <div >
+                <div className="switchLogger" >
                     <Link to="/login">Bereits registriert? Hier anmelden</Link>
                 </div>
                 {message ? (
-                    <p>{message}</p>
+                    <p className="errorMessage">{message}</p>
                 ) : (
-                    <p>{error}</p>
+                    <p className="errorMessage">{error}</p>
                 )}
             </form>
         </section>
