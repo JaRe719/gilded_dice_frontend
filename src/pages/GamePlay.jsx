@@ -151,11 +151,13 @@ console.log("phaseOfPhase" + phaseOfPhase );
 console.log("phaseDetails" + phaseDetails);
   return (
     <div>
-      {isLoading && <LoadingElement />}
-
       <Scales health={charDetails?.healthLvl} stress={charDetails?.stressLvl} satisfaction={charDetails?.satisfactionLvl} />
       <Money income={moneyDetails?.income} outcome={moneyDetails?.outcome} money={moneyDetails?.money} invest={moneyDetails?.invest} />
 
+      
+      {isLoading && <LoadingElement />}
+
+      
       {!phaseOfPhase && <button onClick={handleNewPhase}>Los geht's</button>}
 
       {phaseOfPhase === 1 && phaseDetails && <GamePhaseIntro intro={phaseDetails?.intro} setChosenOption={setChosenOption} setPhaseOfPhase={setPhaseOfPhase}/>}
