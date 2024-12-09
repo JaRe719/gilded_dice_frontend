@@ -6,6 +6,8 @@ import GameDialog from '../components/GamePlay/GameDialog';
 import { useNavigate } from 'react-router-dom';
 // import GamePhaseOutro from '../components/GamePlay/GamePhaseOutro';
 import GameEnd from '../components/GamePlay/GameEnd';
+import Scales from '../components/Scales/Scales';
+import Money from '../components/Scales/Money';
 
 export default function GamePlay() {
 
@@ -150,6 +152,9 @@ console.log("phaseDetails" + phaseDetails);
   return (
     <div>
       {isLoading && <LoadingElement />}
+
+      <Scales health={charDetails?.healthLvl} stress={charDetails?.stressLvl} satisfaction={charDetails?.satisfactionLvl} />
+      <Money income={moneyDetails?.income} outcome={moneyDetails?.outcome} money={moneyDetails?.money} invest={moneyDetails?.invest} />
 
       {!phaseOfPhase && <button onClick={handleNewPhase}>Los geht's</button>}
 
