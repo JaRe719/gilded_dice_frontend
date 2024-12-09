@@ -15,7 +15,7 @@ export default function GamePlay() {
 
     const navigate = useNavigate();
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const [charDetails, setCharDetails] = useState(null);
     const [moneyDetails, setMoneyDetails] = useState(null);

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import "./Home.css";
 import { getAvatarPaths } from '../utils/AvatarProvider';
 import Navbar from '../components/Navbar/Navbar';
 import Dashboard from '../components/Dashboard/Dashboard';
@@ -65,8 +66,10 @@ useEffect(() => {
  
 
   return (
-    <div>
+    <div className='home'>
       <Navbar />
+
+      <div className='middleHome'>
 
       <Dashboard />
 
@@ -86,7 +89,8 @@ useEffect(() => {
           </div>
         }
       </div>
-      <button onClick={()=>navigate("/gameplay")}>Spiel starten</button>
+      </div>
+      <button className='startButton' onClick={()=>navigate("/gameplay")}>Spiel starten</button>
     </div>
   )
 }
