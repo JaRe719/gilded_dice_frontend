@@ -1,0 +1,17 @@
+.gamePhaseIntro{
+    width: 970px;
+    height: 663px;
+    margin: 100px auto;
+    position: relative;
+    background-image: url("../../../public/assets/images/backgrounds/160392.jpg");
+    background-size: cover;
+
+    p{
+        width: 65%;
+        padding: 20px;
+        position: absolute;
+        right: 90px;
+        top: 140px;
+        font-size: 0.8rem;
+    }
+}

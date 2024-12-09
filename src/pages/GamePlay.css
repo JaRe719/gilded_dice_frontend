@@ -1,0 +1,18 @@
+.gamePlay{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.startButtonGameplay{
+    width: 20%;
+  font-size: 1rem;
+  padding: 10px;
+  background: linear-gradient(to bottom right , #6F909F, #435B65, #2F3F46);
+  border: none;
+  border-radius: 20px;
+  color: #F1F3F4;
+  margin: 20px auto;
+  align-self: center;
+  justify-self: center;
+}
