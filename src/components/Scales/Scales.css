@@ -1,3 +1,4 @@
+
 .progress-container {
     position: relative;
     width: 20%; /* Die Breite des Fortschrittsbalkens */
@@ -15,13 +16,13 @@ progress {
 
 }
 
-.progressPos::-webkit-progress-bar {
+.progressNeg::-webkit-progress-bar {
     background: linear-gradient(to right, green, yellow, red); 
     border-radius: 5px;
     
 }
 
-.progressNeg::-webkit-progress-bar {
+.progressPos::-webkit-progress-bar {
     background: linear-gradient(to right, red, yellow, green); 
     border-radius: 5px;
     
@@ -46,4 +47,26 @@ progress::-moz-progress-bar {
     color: #000; /* Farbe des Textes */
     font-weight: bold;
     pointer-events: none; /* Der Text blockiert keine Klicks */
+}
+
+.moneyWrapper,
+.scalesWrapper {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(199, 194, 194, 0.5);
+}
+
+.moneyLabel{
+    font-size: 0.7rem;
+}
+
+.moneyValue{
+    font-weight: bold;
+    font-size: 0.65rem;
+}
+
+.negativeValue{
+    color: darkred;
 }
