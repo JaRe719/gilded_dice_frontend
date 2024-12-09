@@ -21,13 +21,15 @@ export default function Navbar() {
 
     
   return (
-    <div>
+    <div className='navbar'>
 
-        <div>
+        <div className='img'>
             <img src="/gildedDiceLogo.png" alt="Gilded Dice Logo - pile of coins and a d20 dice" />
         </div>
 
-        <div>
+        <h1>Gilded Dice – <span>das Streben nach Reichtum in einer Welt voller Würfelglück</span></h1>
+
+        <div className='menu'>
             {
                 !isActive ?
                     <p onClick={handleMenu}>Menü</p>
@@ -35,8 +37,8 @@ export default function Navbar() {
                     <ul>
                         <li onClick={handleLogout}>Logout</li>
                         <li><DeleteProfile setActionMessage={setActionMessage} /></li>
-                        {actionMessage && <p>{actionMessage}</p>}
-                        <li onClick={handleMenu}>Schließen</li>
+                        {actionMessage ? <p className='actionMessageMenu'>{actionMessage}</p> : <p></p>}
+                        <li onClick={handleMenu} alt="schließen" className='closeMenu'>X</li>
                     </ul>
             }
         </div>

@@ -1,0 +1,83 @@
+.navbar{
+    width: 100%;
+    height: 15vh;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .img{
+        width: 20%;
+        height: 100%;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    h1{
+        font-size: 1.6rem;
+        text-align: center;
+
+        span{
+            font-size: 1.2rem;
+            display: block;
+        }
+    }
+
+    .menu{
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        p{
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        ul{
+            height: 150%;
+            margin-bottom: -2rem;
+            text-align: end;
+
+            li{
+                font-size: 1.1rem;
+                list-style: none;
+                cursor: pointer;
+            }
+            p{
+                font-size: 1.1rem;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.closeMenu{
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1.2rem;
+}
+.buttonBoxMenu{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+}
+.innerButton{
+    font-size: 0.6rem;
+    word-wrap: normal;
+    padding: 5px;
+    background-color: #F1F3F4;
+    border: 1px solid #B8C2C6;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.actionMessageMenu{
+    color: darkred;
+    font-size: 1rem;
+}

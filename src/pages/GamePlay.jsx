@@ -6,6 +6,8 @@ import GameDialog from '../components/GamePlay/GameDialog';
 import { useNavigate } from 'react-router-dom';
 // import GamePhaseOutro from '../components/GamePlay/GamePhaseOutro';
 import GameEnd from '../components/GamePlay/GameEnd';
+import Scales from '../components/Scales/Scales';
+import Money from '../components/Scales/Money';
 
 export default function GamePlay() {
 
@@ -13,7 +15,7 @@ export default function GamePlay() {
 
     const navigate = useNavigate();
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const [charDetails, setCharDetails] = useState(null);
     const [moneyDetails, setMoneyDetails] = useState(null);
@@ -149,8 +151,13 @@ console.log("phaseOfPhase" + phaseOfPhase );
 console.log("phaseDetails" + phaseDetails);
   return (
     <div>
+      <Scales health={charDetails?.healthLvl} stress={charDetails?.stressLvl} satisfaction={charDetails?.satisfactionLvl} />
+      <Money income={moneyDetails?.income} outcome={moneyDetails?.outcome} money={moneyDetails?.money} invest={moneyDetails?.invest} />
+
+      
       {isLoading && <LoadingElement />}
 
+      
       {!phaseOfPhase && <button onClick={handleNewPhase}>Los geht's</button>}
 
       {phaseOfPhase === 1 && phaseDetails && <GamePhaseIntro intro={phaseDetails?.intro} setChosenOption={setChosenOption} setPhaseOfPhase={setPhaseOfPhase}/>}

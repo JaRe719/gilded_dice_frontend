@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./Navbar.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function DeleteProfile({props}) {
@@ -44,16 +45,18 @@ export default function DeleteProfile({props}) {
     }
 
   return (
-    <div>
-        <h2>Profil löschen</h2>
+    <div className='deleteProfile'>
+        <p>Profil löschen</p>
         { 
             !buttonToggle ?
-             <button onClick={handleOnClick}>Löschen</button>
+             <button className='innerButton' onClick={handleOnClick}>Löschen</button>
             :
             <div>
                 <p>Bist du sicher?</p>
-                <button onClick={()=>{setButtonToggle(false)}}>Nein, ich möchte bleiben</button>
-                <button onClick={()=> {setIsSure(true); handleDelete()}}>Ja, löschen!</button>
+                <div className='buttonBoxMenu'>
+                    <button className='innerButton' onClick={()=>{setButtonToggle(false)}}>Nein, ich möchte bleiben</button>
+                    <button className='innerButton' onClick={()=> {setIsSure(true); handleDelete()}}>Ja, löschen!</button>
+                </div>
             </div>
         }
     </div>
