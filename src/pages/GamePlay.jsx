@@ -142,7 +142,7 @@ export default function GamePlay() {
         console.log("pase of phase: " + typeof(phaseOfPhase) + phaseOfPhase);
         console.log("options: " + options);
         console.log("isInvest: " + isInvest)
-    }, [phaseDetails, phaseOfPhase, options]);
+    }, [phaseDetails, phaseOfPhase, options, isInvest]);
 
 
 console.log("phaseOfPhase" + phaseOfPhase );
@@ -154,7 +154,7 @@ console.log("phaseDetails" + phaseDetails);
       {!phaseOfPhase && <button onClick={handleNewPhase}>Los geht's</button>}
 
       {phaseOfPhase === 1 && phaseDetails && <GamePhaseIntro intro={phaseDetails?.intro} setChosenOption={setChosenOption} setPhaseOfPhase={setPhaseOfPhase}/>}
-      {phaseOfPhase === 2 && phaseDetails && options && <GameOptions setChosenOption={setChosenOption} phaseDetails={phaseDetails} options={options} setPhaseOfPhase={setPhaseOfPhase} money={moneyDetails?.money} isSkipable={isSkipable}/>}
+      {phaseOfPhase === 2 && phaseDetails && options && <GameOptions setChosenOption={setChosenOption} phaseDetails={phaseDetails} options={options} setOptions={setOptions} setPhaseOfPhase={setPhaseOfPhase} money={moneyDetails?.money} isSkipable={isSkipable} isReturning={isReturning} />}
       {phaseOfPhase === 3 && phaseDetails && <GameDialog chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} avatar={charDetails?.avatar} lastPhase={phaseDetails?.gameEnd} isReturning={isReturning} handleNewPhase={handleNewPhase}/>}
       {/* {phaseOfPhase === 4 && <GamePhaseOutro chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} />} */}
       {phaseOfPhase === 5 && phaseDetails && <GameEnd chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} />}

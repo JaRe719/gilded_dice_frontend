@@ -2,15 +2,20 @@ import React from 'react'
 
 export default function GameOptionCard(props) {
 
+  console.log(props.isReturning)
+
   const handleOption = () => {
     props.setChosenOption(props.option.id);
 
     if(props.isReturning) {
       const newOptions = props.options;
 
-      newOptions.splice(props.option.id, 1);
+      const index = newOptions.findIndex(obj => obj.id === props.option.id);
+
+      newOptions.splice(index, 1);
 
       props.setOptions(newOptions);
+      console.log("newOptions :" + newOptions)
     };
 
     props.setPhaseOfPhase(3);
