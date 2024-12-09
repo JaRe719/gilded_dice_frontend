@@ -76,16 +76,18 @@ useEffect(() => {
       <div>
         {
           chosenAvatar ?
-          <div onClick={()=> navigate("/character")}>
+          <div className='avatarWrapper' onClick={()=> navigate("/character")}>
             <h4>Dein erstellter Charakter:</h4>
-            <div>
+            <div className='imgBox'>
               <img src={avatars[chosenAvatar]} alt="chosen avatar" />
             </div>
           </div>
           :
-          <div onClick={()=> navigate("/character")}>
+          <div className='avatarWrapper' onClick={()=> navigate("/character")}>
             <h4>Erstelle jetzt einen Charakter</h4>
+            <div className='imgBox'>
               <img src={avatars[currentIndex]} alt="changing avatar" />
+            </div>
           </div>
         }
       </div>
