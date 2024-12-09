@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function GameEnd() {
+export default function GamePhaseOutro() {
   return (
     <div>
       

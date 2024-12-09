@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export default function GamePhaseIntro() {
+export default function GamePhaseIntro(props) {
   return (
-    <div>
-      
+    <div onClick={()=> props.setPhaseOfPhase(2)}>
+      <p>{props.intro}</p>
     </div>
   )
 }

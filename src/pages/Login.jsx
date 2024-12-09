@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 
@@ -9,9 +9,9 @@ export default function LogIn() {
     const { login } = useAuth();
     const [error, setError] = useState("");
 
-    useEffect(()=>{
-        sessionStorage.removeItem("token");
-    }, [])
+    // useEffect(()=>{
+    //     sessionStorage.removeItem("token");
+    // }, [])
 
     async function loginFunction(event) {
         event.preventDefault();

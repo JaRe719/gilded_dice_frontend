@@ -86,6 +86,7 @@ useEffect(() => {
           </div>
         }
       </div>
+      <button onClick={()=>navigate("/gameplay")}>Spiel starten</button>
     </div>
   )
 }
