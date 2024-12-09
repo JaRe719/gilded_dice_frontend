@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import "./GameOptions.css";
 
 export default function GameOptionCard(props) {
 
@@ -23,8 +24,10 @@ export default function GameOptionCard(props) {
   };
 
   return (
-    <div >
+    <div className='gameOptionCard'>
         <h2>{props.option.title}</h2>
+        {!props.option.title === "Autokauf" && props.driverLicense === false && <p>Beachte, dass du noch keinen Führerschein hast!</p>}
+        {props.option.cost !== null && props.option.cost > props.money && <p>Du hast nicht genügend Geld zur Verfügung!</p>}
         <button
           onClick={()=> handleOption()}
           disabled={props.option.cost !== null && props.option.cost > props.money}

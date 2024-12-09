@@ -63,9 +63,9 @@ console.log('finalResults:', finalResults.value);
 
   return (
     <div id='dice'>
-       <div id="result-display" style={{ margin: "20px 0", fontWeight: "bold" }}>
+       {/* <div id="result-display" style={{ margin: "20px 0", fontWeight: "bold" }}>
         
-      </div>
+      </div> */}
       <div className="buttonList">
         <AdvRollBtn
           label="Würfle"
