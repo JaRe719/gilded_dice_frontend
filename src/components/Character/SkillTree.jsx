@@ -46,10 +46,10 @@ export default function SkillTree({intelligence, setIntelligence, negotiate, set
       };
 
     return (
-        <div>
+        <div className='skillTree'>
             <h2>Lege die Punkte für deine Fähigkeiten fest</h2>
 
-            <p>Du hast noch {remainingSkillPoints} Punkte von {skillPoints} Punkten zur Verfügung</p>
+            <p>Du hast noch <span>{remainingSkillPoints}</span> Punkte von <span>{skillPoints}</span> Punkten zur Verfügung</p>
       
             <form className='skillForm'>
                 <label htmlFor="intelligenceInput">Intelligenz</label>
