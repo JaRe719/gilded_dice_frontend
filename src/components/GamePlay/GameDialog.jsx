@@ -130,12 +130,12 @@ console.log("dialogPhase: " + dialogPhase);
 const avatars = getAvatarPaths(); 
 
   return (
-    <div>
+    <div className='gameDialog'>
 
       {isLoading && <LoadingElement />}
 
       {!isLoading && chosenOptionDetails &&
-      <div onClick={(e) => {
+      <div className='gameDialogPlayWrapper' onClick={(e) => {
         e.preventDefault();
         if(dialogPhase < 3){
         setDialogPhase(dialogPhase+1)
@@ -143,14 +143,14 @@ const avatars = getAvatarPaths();
       }}>
         <GameAvatarBox avatar={chosenOptionDetails?.npcFilename} name={chosenOptionDetails.npcName} />
         {dialogPhase===1?
-          <div>
-            <p>{chosenOptionDetails?.startMessage}</p>
+          <div className='dialogNpcWrapper'>
+            <p className='dialogNpc'>{chosenOptionDetails?.startMessage}</p>
           </div>
         : dialogPhase === 4 && isLoading ?
           <LoadingElement /> 
           : dialogPhase === 4 && !isLoading && optionResult && diceRollDone ?
-          <div>
-           <p>{optionResult?.endMessage}</p>
+          <div className='dialogNpcWrapper'>
+           <p className='dialogNpc speech-bubble'>{optionResult?.endMessage}</p>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -170,15 +170,15 @@ const avatars = getAvatarPaths();
           : ""
         }
         {dialogPhase===2 && props.isInvest?
-          <div>
-            <p>{`Ich würde gerne ${chosenInvest} investieren.`}</p>
+          <div className='dialogCharWrapper'>
+            <p className='dialogChar'>{`Ich würde gerne ${chosenInvest} investieren.`}</p>
           </div>
           : ""
         }
         <GameAvatarBox avatar={avatars[props.avatar]} name={props.username ? props.username : "Du"} />
         {props.isInvest && showInvest &&
-        <div>
-          <p>Wie viel möchtest du investieren?</p>
+        <div className='dialogNpcWrapper'>
+          <p className='dialogNpc'>Wie viel möchtest du investieren?</p>
           <input type="number" name="investInput" id="investInput" onChange={(e) => setChosenInvest(e.target.value)}/>
           <button onClick={(e) => handleInvest(e)}>Investieren</button>
           {errorMessage && <p>{errorMessage}</p>}
@@ -221,7 +221,7 @@ const avatars = getAvatarPaths();
   </div>
 )} */}
          
-          </div>
+  </div>
       </div>
       }
  

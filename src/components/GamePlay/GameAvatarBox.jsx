@@ -7,8 +7,8 @@ export default function GameAvatarBox(props) {
   
 
   return (
-    <div>
-        <div>
+    <div className='gameAvatarBox'>
+        <div className='gameAvatarImgBox'>
             <img src={props.avatar} alt="Avatar" />
         </div>
         <p>{props.name}</p>
