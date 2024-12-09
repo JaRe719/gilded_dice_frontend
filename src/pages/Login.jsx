@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./Logging.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
+import "./Logging.css";
 
 export default function LogIn() {
     const navigate = useNavigate();
@@ -44,9 +44,9 @@ export default function LogIn() {
             }
 
             const data = await response.json();
-            console.log(data);
-             await login(data.token);
-            navigate("/home");
+            await sessionStorage.setItem("token", data.token);
+            await login(data.token);
+            await navigate("/home");
         } catch (error) {
             console.error("Error:", error.message);
             setError(error.message);
@@ -91,6 +91,7 @@ export default function LogIn() {
 
                 <div className="switchLogger">
                     <Link to="/register">Kein Konto? Hier registrieren</Link>
+                    <Link to="/home"> Angemeldet geklickt aber es passiert nichts? Klick hier</Link>
                 </div>
                 {/* <button type="submit">
                     Password vergessen?
