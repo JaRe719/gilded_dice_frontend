@@ -1,5 +1,38 @@
+.skillTree{
+    width: 60%;
+    margin: 50px auto;
+
+    h2{
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    p{
+        font-size: 1.2rem;
+
+        span{
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+}
+
 .skillForm{
-    display: flex;
-    flex-direction: column;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     gap: 10px;
+    margin: 20px 0;
+
+    label{
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    input{
+        border: none;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
 }
