@@ -17,7 +17,10 @@ export default function GameOptionCard(props) {
 
       props.setOptions(newOptions);
       console.log("newOptions :" + newOptions);
-      props.setIsReturning(true);
+      if(newOptions.length>0){
+       props.setIsReturning(true); 
+      }
+      
     };
 
     props.setPhaseOfPhase(3);

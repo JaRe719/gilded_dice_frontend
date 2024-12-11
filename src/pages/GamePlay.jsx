@@ -144,6 +144,8 @@ export default function GamePlay() {
         console.log("GamePlay isInvest: " + isInvest)
     }, [phaseDetails, phaseOfPhase, options, isInvest]);
 
+    console.log("GamePlay isReturning: " + isReturning)
+
 
 // console.log("phaseOfPhase" + phaseOfPhase );
 // console.log("phaseDetails" + phaseDetails);
