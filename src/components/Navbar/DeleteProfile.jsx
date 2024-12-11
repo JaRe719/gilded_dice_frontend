@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import "./Navbar.css";
 import { useNavigate } from 'react-router-dom';
+import "./Navbar.css";
 
 export default function DeleteProfile({props}) {
 
@@ -17,9 +17,8 @@ export default function DeleteProfile({props}) {
     const handleDelete = () => {
 
         if(token && isSure){
-            sessionStorage.removeItem("token");
 
-            fetch(`${process.env.REACT_APP_BACKEND}/api/v1/auth`, {
+            fetch(`${process.env.REACT_APP_BACKEND}/api/v1/auth/delete`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,6 +31,7 @@ export default function DeleteProfile({props}) {
                     setTimeout(()=> navigate("/"), 1000);
                     setButtonToggle(false);
                     setIsSure(false);
+                    sessionStorage.removeItem("token");
                 } else {
                     props.setActionMessage("Da ist etwas schief gelaufen, bitte versuche es später noch einmal.");
                     setButtonToggle(false);

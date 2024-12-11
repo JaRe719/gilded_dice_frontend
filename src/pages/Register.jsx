@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import "./Logging.css";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./Logging.css";
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -73,7 +73,7 @@ export default function Register() {
             if (!response.ok) {
                 throw new Error(`Error: ${response.statusText}`);
             }
-            navigate("/home");
+            navigate("/login");
         } catch (error) {
             console.error("Error:", error.message);
             setError(error.message);

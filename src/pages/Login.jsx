@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./Logging.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
+import "./Logging.css";
 
 export default function LogIn() {
     const navigate = useNavigate();
@@ -44,8 +44,7 @@ export default function LogIn() {
             }
 
             const data = await response.json();
-            console.log(data);
-             await login(data.token);
+            await login(data.token);
             navigate("/home");
         } catch (error) {
             console.error("Error:", error.message);
