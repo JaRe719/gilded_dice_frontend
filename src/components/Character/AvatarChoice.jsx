@@ -5,7 +5,7 @@ import "./AvatarChoice.css";
 export default function AvatarChoice({selectedAvatar, setSelectedAvatar, avatars}) {
   
     const [currentAvatar, setCurrentAvatar] = useState(selectedAvatar);
-    console.log("currentAvatar: " + currentAvatar)
+    
     const totalAvatars = 12;
 
     const nextAvatar = () => {
@@ -24,7 +24,7 @@ export default function AvatarChoice({selectedAvatar, setSelectedAvatar, avatars
         setCurrentAvatar(selectedAvatar)
     },[selectedAvatar])
 
-    console.log("selectedAvatar: " + selectedAvatar)
+    
   
     return (
     <div className='avatarWrapper'>

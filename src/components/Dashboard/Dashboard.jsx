@@ -24,7 +24,7 @@ export default function Dashboard() {
         })
         .then(data =>{
             setTopTen(data);
-            console.log("data toplist: " + JSON.stringify(data));
+            // console.log("data toplist: " + JSON.stringify(data));
         })
         .catch(error => {
             console.error("Error:", error);
@@ -47,7 +47,7 @@ export default function Dashboard() {
         })
         .then(data =>{
             setHighscoresAll(data);
-            console.log("data highscores all: " + JSON.stringify(data));
+            // console.log("data highscores all: " + JSON.stringify(data));
         })
         .catch(error => {
             console.error("Error:", error);

@@ -3,12 +3,12 @@ import "./GameOptions.css";
 
 export default function GameOptionCard(props) {
 
-  console.log(props.isReturning)
+  console.log("GameOptionCard isReturning: " + props.option.returning)
 
   const handleOption = () => {
     props.setChosenOption(props.option.id);
 
-    if(props.isReturning) {
+    if(props.option.returning) {
       const newOptions = props.options;
 
       const index = newOptions.findIndex(obj => obj.id === props.option.id);
@@ -16,7 +16,8 @@ export default function GameOptionCard(props) {
       newOptions.splice(index, 1);
 
       props.setOptions(newOptions);
-      console.log("newOptions :" + newOptions)
+      console.log("newOptions :" + newOptions);
+      props.setIsReturning(true);
     };
 
     props.setPhaseOfPhase(3);

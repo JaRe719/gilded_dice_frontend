@@ -44,7 +44,7 @@ export default function GameDialog(props) {
         })
         .then(data =>{
             setChosenOptionDetails(data);
-            console.log("data: " + JSON.stringify(data));
+            console.log("data chosenOption: " + JSON.stringify(data));
             setIsLoading(false);
             props.setPhaseOfPhase(3);
         })
@@ -106,7 +106,7 @@ if(token){
     })
     .then(data =>{
         setOptionResult(data);
-        console.log("optionresultdata: " + JSON.stringify(data));
+        // console.log("optionresult data: " + JSON.stringify(data));
         setIsLoading(false);
         setDiceRollDone(true);
         setDialogPhase(4);
@@ -154,8 +154,10 @@ const avatars = getAvatarPaths();
         <button
           onClick={(e) => {
             e.preventDefault();
+            console.log("GameDialog props.isReturning" + props.isReturning)
             if (props.isReturning && optionResult.choiceWon === false) {
               props.setPhaseOfPhase(2);
+              props.setIsReturning(false);
             } else if (props.lastPhase) {
               props.setPhaseOfPhase(5);
             } else {

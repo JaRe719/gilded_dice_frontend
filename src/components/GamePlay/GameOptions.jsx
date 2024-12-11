@@ -3,9 +3,9 @@ import "./GameOptions.css";
 import GameOptionCard from './GameOptionCard';
 
 export default function GameOptions(props) {
-  console.log(props.isReturning)
-  console.log(props.options)
-  console.log(props.isSkipable)
+  console.log("GameOptions isReturning: " + props.isReturning)
+  console.log("GameOptions options: " + props.options)
+  console.log("GameOptions isSkipable" + props.isSkipable)
 
   // category options:
   // WIN, --> überspringen Option
@@ -19,7 +19,7 @@ export default function GameOptions(props) {
       <h1>Wähle eine Option aus den folgenden</h1>
       {props.options.map((option, index)=>{
         return(
-          <GameOptionCard key={index} driverLicense={props.driverLicense} option={option} options={props.options} setOptions={props.setOptions} money={props.money} setChosenOption={props.setChosenOption} setPhaseOfPhase={props.setPhaseOfPhase} isReturning={props.isReturning}/>
+          <GameOptionCard key={index} driverLicense={props.driverLicense} setIsReturning={props.setIsReturning} option={option} options={props.options} setOptions={props.setOptions} money={props.money} setChosenOption={props.setChosenOption} setPhaseOfPhase={props.setPhaseOfPhase}/>
         )
       })}
 

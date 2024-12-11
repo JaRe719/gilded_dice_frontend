@@ -8,8 +8,6 @@ export default function SkillTree({intelligence, setIntelligence, negotiate, set
     const [remainingSkillPoints, setRemainingSkillPoints] = useState();
     const skillPoints = 8;
 
-    console.log(intelligence, negotiate, ability, planning, stamina);
-
     useEffect(()=>{
         setRemainingSkillPoints(skillPoints-intelligence-negotiate-ability-planning-stamina);
     }, [intelligence, negotiate, ability, planning, stamina]);
