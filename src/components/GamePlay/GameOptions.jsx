@@ -5,6 +5,7 @@ import GameOptionCard from './GameOptionCard';
 export default function GameOptions(props) {
   console.log(props.isReturning)
   console.log(props.options)
+  console.log(props.isSkipable)
 
   // category options:
   // WIN, --> überspringen Option
