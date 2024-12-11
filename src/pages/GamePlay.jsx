@@ -86,7 +86,7 @@ export default function GamePlay() {
             setIsInvest(false);
         };
 
-        if(phaseDetails?.skipable){
+        if(phaseDetails?.skippable){
             setIsSkipable(true);
         } else {
             setIsSkipable(false);
