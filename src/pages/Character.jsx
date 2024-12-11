@@ -23,7 +23,6 @@ export default function Character() {
     }, []);
 
     const avatars = getAvatarPaths();
-    console.log(avatars);
     const [selectedAvatar, setSelectedAvatar] = useState(0);
 
     const [charDetails, setCharDetails] = useState(null);
@@ -46,7 +45,6 @@ export default function Character() {
         })
         .then(data =>{
             setCharDetails(data);
-            console.log("data: " + JSON.stringify(data));
             setIsGetCharDone(true);
         })
         .catch(error => {

@@ -48,7 +48,7 @@ export default function GamePlay() {
             })
             .then(data =>{
                 setCharDetails(data);
-                console.log("chardata: " + JSON.stringify(data));
+                // console.log("chardata: " + JSON.stringify(data));
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -70,7 +70,7 @@ export default function GamePlay() {
             })
             .then(data =>{
                 setMoneyDetails(data);
-                console.log("moneydata: " + JSON.stringify(data));
+                // console.log("moneydata: " + JSON.stringify(data));
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -92,11 +92,11 @@ export default function GamePlay() {
             setIsSkipable(false);
         };
 
-        if(phaseDetails?.category === "MAINX"){
-            setIsReturning(true);
-        } else{
-            setIsReturning(false);
-        };
+        // if(phaseDetails?.category === "MAINX"){
+        //     setIsReturning(true);
+        // } else{
+        //     setIsReturning(false);
+        // };
     }, [phaseDetails]);
     
 
@@ -124,8 +124,8 @@ export default function GamePlay() {
                 
                 setOptions(Array.isArray(choices) ? choices : []);
                 
-                console.log("Choices set in options:", choices);
-                console.log("data phase details: " + JSON.stringify(data));
+                // console.log("Choices set in options:", choices);
+                // console.log("data phase details: " + JSON.stringify(data));
                 setIsLoading(false);
                 setPhaseOfPhase(1);
             })
@@ -138,15 +138,15 @@ export default function GamePlay() {
     };
 
     useEffect(() => {
-        console.log("Updated phaseDetails:", phaseDetails);
-        console.log("pase of phase: " + typeof(phaseOfPhase) + phaseOfPhase);
-        console.log("options: " + options);
-        console.log("isInvest: " + isInvest)
+        console.log("GamePlay Updated phaseDetails:", phaseDetails);
+        console.log("GamePlay pase of phase: " + typeof(phaseOfPhase) + phaseOfPhase);
+        console.log("GamePlay options: " + options);
+        console.log("GamePlay isInvest: " + isInvest)
     }, [phaseDetails, phaseOfPhase, options, isInvest]);
 
 
-console.log("phaseOfPhase" + phaseOfPhase );
-console.log("phaseDetails" + phaseDetails);
+// console.log("phaseOfPhase" + phaseOfPhase );
+// console.log("phaseDetails" + phaseDetails);
   return (
     <div className='gamePlay'>
       <Scales health={charDetails?.healthLvl} stress={charDetails?.stressLvl} satisfaction={charDetails?.satisfactionLvl} />
@@ -159,8 +159,8 @@ console.log("phaseDetails" + phaseDetails);
       {!phaseOfPhase && <button className='startButtonGameplay' onClick={handleNewPhase}>Los geht's</button>}
 
       {phaseOfPhase === 1 && phaseDetails && <GamePhaseIntro intro={phaseDetails?.intro} setChosenOption={setChosenOption} setPhaseOfPhase={setPhaseOfPhase}/>}
-      {phaseOfPhase === 2 && phaseDetails && options && <GameOptions handleNewPhase={handleNewPhase} driverLicense={charDetails?.driverLicense} setChosenOption={setChosenOption} phaseDetails={phaseDetails} options={options} setOptions={setOptions} setPhaseOfPhase={setPhaseOfPhase} money={moneyDetails?.money} isSkipable={isSkipable} isReturning={isReturning} />}
-      {phaseOfPhase === 3 && phaseDetails && <GameDialog chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} avatar={charDetails?.avatar} lastPhase={phaseDetails?.gameEnd} isReturning={isReturning} handleNewPhase={handleNewPhase}/>}
+      {phaseOfPhase === 2 && phaseDetails && options && <GameOptions setIsReturning={setIsReturning} handleNewPhase={handleNewPhase} driverLicense={charDetails?.driverLicense} setChosenOption={setChosenOption} phaseDetails={phaseDetails} options={options} setOptions={setOptions} setPhaseOfPhase={setPhaseOfPhase} money={moneyDetails?.money} isSkipable={isSkipable}  />}
+      {phaseOfPhase === 3 && phaseDetails && <GameDialog isReturning={isReturning} setIsReturning={setIsReturning} chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} avatar={charDetails?.avatar} lastPhase={phaseDetails?.gameEnd} handleNewPhase={handleNewPhase}/>}
       {/* {phaseOfPhase === 4 && <GamePhaseOutro chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} />} */}
       {phaseOfPhase === 5 && phaseDetails && <GameEnd chosenOption={chosenOption} isInvest={isInvest} setPhaseOfPhase={setPhaseOfPhase} phaseDetails={phaseDetails} setPhaseDetails={setPhaseDetails} />}
 
