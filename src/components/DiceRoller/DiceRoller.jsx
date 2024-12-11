@@ -38,12 +38,9 @@ Dice.init({
 export default function DiceRoller(props) {
 
     Dice.onRollComplete = (results) => {
-        console.log(results);
+        // console.log(results);
     
         const finalResults = DRP.parseFinalResults(results);
-
-        console.log('results:', results); 
-console.log('finalResults:', finalResults.value);
     
         // show the results
         // DiceResults.showResults(finalResults);

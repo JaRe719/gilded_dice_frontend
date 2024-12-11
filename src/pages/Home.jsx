@@ -42,7 +42,6 @@ export default function Home() {
     })
     .then(data =>{
         setCharDetails(data);
-        console.log("data: " + JSON.stringify(data));
     })
     .catch(error => {
         console.error("Error:", error);
