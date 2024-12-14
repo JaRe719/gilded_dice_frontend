@@ -148,7 +148,7 @@ export default function GamePlay() {
 
 
 // console.log("phaseOfPhase" + phaseOfPhase );
-// console.log("phaseDetails" + phaseDetails);
+console.log("phaseDetails" + phaseDetails);
   return (
     <div className='gamePlay'>
       <Scales health={charDetails?.healthLvl} stress={charDetails?.stressLvl} satisfaction={charDetails?.satisfactionLvl} />

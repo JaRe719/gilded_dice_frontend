@@ -3,7 +3,11 @@ import "./GameOptions.css";
 
 export default function GameOptionCard(props) {
 
-  console.log("GameOptionCard isReturning: " + props.option.returning)
+  console.log("GameOptionCard isReturning: " + props.option.returning);
+  console.log("GameOptionCard option: " + JSON.stringify(props.option));
+  console.log("GameOptionCard option.title: " + props.option.title);
+
+  // let title = props.phaseDetails.title ? props.phaseDetails.title !== undefined? props.phaseDetails.title : "nope" : "nope";
 
   const handleOption = () => {
     props.setChosenOption(props.option.id);
@@ -27,10 +31,12 @@ export default function GameOptionCard(props) {
 
   };
 
+
+
   return (
     <div className='gameOptionCard'>
         <h2>{props.option.title}</h2>
-        {!props.option.title === "Autokauf" && props.driverLicense === false && <p>Beachte, dass du noch keinen Führerschein hast!</p>}
+        {/* {title === "Autokauf" && props.driverLicense === false && <p>Beachte, dass du noch keinen Führerschein hast!</p>} */}
         {props.option.cost !== null && props.option.cost > props.money && <p>Du hast nicht genügend Geld zur Verfügung!</p>}
         <button
           onClick={()=> handleOption()}

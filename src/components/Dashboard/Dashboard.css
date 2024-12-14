@@ -1,16 +1,78 @@
 .highscores{
     width: 80%;
         margin: 0 auto;
-    div, ol{
+        overflow: hidden;
+    div{
         width: 100%;
         display: flex;
         gap: 5px;
         justify-content: space-between;
+        margin-bottom: 10px;
+        overflow: hidden;
         h3{
             font-size: 0.8rem;
         }
     }
+    ol{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style-type: decimal;
+        counter-reset: list-counter; 
+        height: 150px;
+        
+    
+    li{
+        counter-increment: list-counter; /* Erhöhe den Zähler pro Element */
+        position: relative; /* Erforderlich für das `::before` */
+        display: flex;
+        justify-content: space-between;
+        padding-left: 2rem;
+        font-size: 0.5rem;
+
+        &::before{
+            content: counter(list-counter) ". "; /* Fügt die Zählung als Text ein */
+            position: absolute;
+            left: 0; /* Positioniere die Nummer links vom Inhalt */
+            font-weight: bold;
+            color: #333;
+        }
+
+        span{
+            font-size: 0.5rem;
+        }
+
+        &:nth-of-type(1) span{
+            font-weight: bold;
+        }
+    }
 }
+
+}
+
+.scrollWrapper{
+    overflow: hidden;
+}
+.scrollingOl{
+    animation: scroll-list 20s linear infinite;
+    }
+
+
+
+@keyframes scroll-list {
+    0% {
+      transform: translateY(0); 
+    }
+    7% {
+        transform: translateY(0);  
+    }
+    50% {
+      transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0); 
+      }
+  }
 
 .noValue{
     font-size: 0.5rem;
@@ -25,5 +87,6 @@
 
     h2{
         font-size: 1rem;
+        margin-bottom: 10px;
     }
 }
