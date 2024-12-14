@@ -65,7 +65,7 @@ export default function Dashboard() {
       <div>
         <h2>Gesamt Highscores</h2>
         {(!highscoresAll || highscoresAll.length <1) && <p className='noValue'>Noch keine Scores verfügbar</p>}
-        <Highscore list={highscoresAll} />
+        <Highscore list={highscoresAll} scrollable={true}/>
       </div>
     </div>
   )
