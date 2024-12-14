@@ -31,7 +31,7 @@ export default function GameOptionCard(props) {
   return (
     <div className='gameOptionCard'>
         <h2>{props.option.title}</h2>
-        {props.phaseDetails.title === "Autokauf" && props.driverLicense === false && <p>Beachte, dass du noch keinen Führerschein hast!</p>}
+        {props.phaseDetails.title && props.phaseDetails.title === "Autokauf" && props.driverLicense === false && <p>Beachte, dass du noch keinen Führerschein hast!</p>}
         {props.option.cost !== null && props.option.cost > props.money && <p>Du hast nicht genügend Geld zur Verfügung!</p>}
         <button
           onClick={()=> handleOption()}
