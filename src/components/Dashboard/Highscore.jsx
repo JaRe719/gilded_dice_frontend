@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Dashboard.css";
 
-export default function Highscore({list}) {
+export default function Highscore({list, scrollable}) {
 
   return (
     <div className='highscores'>
@@ -9,7 +9,8 @@ export default function Highscore({list}) {
         <h3>Spieler</h3>
         <h3>Highscore</h3>
       </div>
-      <ol>
+      <div className='scrollWrapper'>
+      <ol className={scrollable? "scrollingOl" : ""}>
        { list &&
        list.map((player, index)=>{
         return (
@@ -20,6 +21,7 @@ export default function Highscore({list}) {
         )
        })}
       </ol>
+      </div>
     </div>
   )
 }
