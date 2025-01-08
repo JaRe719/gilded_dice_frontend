@@ -65,6 +65,7 @@ export default function LogIn() {
                         type="email"
                         id="email"
                         placeholder="z.B. max@mustermann.de"
+                        autoFocus
                         required
                     />
                 </div>
