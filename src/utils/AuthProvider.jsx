@@ -26,18 +26,13 @@ const AuthProvider = ({ children }) => {
       return;
     }
 
-
-    
-          // Token ist gespeichert, also versuchen wir ihn zu verifizieren
     fetch(`${process.env.REACT_APP_BACKEND}/api/v1/protectRoute`, {
       headers: {
         Authorization: "Bearer " + storedToken,
       },
     })
       .then((response) => {
-        if (response.ok) {
-          setToken(storedToken);
-        } else {
+        if (!response.ok) {
           logOut();
         }
       })
