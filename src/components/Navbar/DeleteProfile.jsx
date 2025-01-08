@@ -7,7 +7,6 @@ export default function DeleteProfile({props}) {
     const token = sessionStorage.getItem("token");
     const navigate = useNavigate();
 
-    const [isSure, setIsSure] = useState(false);
     const [buttonToggle, setButtonToggle] = useState(false);
 
     const handleOnClick = () => {
@@ -16,7 +15,7 @@ export default function DeleteProfile({props}) {
 
     const handleDelete = () => {
 
-        if(token && isSure){
+        if(token){
 
             fetch(`${process.env.REACT_APP_BACKEND}/api/v1/auth/delete`, {
                 method: "DELETE",
@@ -26,16 +25,18 @@ export default function DeleteProfile({props}) {
                 }
             })
             .then(response => {
+                console.log(response.ok);
                 if (response.ok) {
-                    props.setActionMessage("Dein Profil wurde erfolgreich gelöscht.");
+                    // props.setActionMessage("Dein Profil wurde erfolgreich gelöscht.");
+                    alert("Profil gelöscht");
                     setTimeout(()=> navigate("/"), 1000);
                     setButtonToggle(false);
-                    setIsSure(false);
+                
                     sessionStorage.removeItem("token");
                 } else {
-                    props.setActionMessage("Da ist etwas schief gelaufen, bitte versuche es später noch einmal.");
+                    // props.setActionMessage("Da ist etwas schief gelaufen, bitte versuche es später noch einmal.");
+                    alert("Profil Löschung nicht erfolgreich");
                     setButtonToggle(false);
-                    setIsSure(false);
                 }
             })
             .catch(error => {
@@ -46,16 +47,15 @@ export default function DeleteProfile({props}) {
 
   return (
     <div className='deleteProfile'>
-        <p>Profil löschen</p>
         { 
             !buttonToggle ?
-             <button className='innerButton' onClick={handleOnClick}>Löschen</button>
+             <button className='deleteProfileText' onClick={handleOnClick}>Profil löschen</button>
             :
             <div>
                 <p>Bist du sicher?</p>
                 <div className='buttonBoxMenu'>
                     <button className='innerButton' onClick={()=>{setButtonToggle(false)}}>Nein, ich möchte bleiben</button>
-                    <button className='innerButton' onClick={()=> {setIsSure(true); handleDelete()}}>Ja, löschen!</button>
+                    <button className='innerButton' onClick={()=> {handleDelete()}}>Ja, löschen!</button>
                 </div>
             </div>
         }
