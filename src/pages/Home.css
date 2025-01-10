@@ -21,7 +21,7 @@
     justify-content: space-between;
 }
 
-.startButton{
+.gameButtons{
     font-size: 2rem;
     background: linear-gradient(to bottom right , #6F909F, #435B65, #2F3F46);
     border: none;
