@@ -12,9 +12,6 @@ import ProtectedRouteUser from './utils/ProtectedRouteUser.jsx';
 
 function App() {
 
-  const token = sessionStorage.getItem("token");
-
-
   const router = createBrowserRouter([
     {
         path: "",
@@ -36,7 +33,7 @@ function App() {
     },
     {
       path: "",
-      element: <ProtectedRouteUser token={token} />,
+      element: <ProtectedRouteUser />,
       children: [
           {
               path: "home",
@@ -52,8 +49,8 @@ function App() {
         },
       ],
   },
-    
 ]);
+
   return (
     <div className="App">
       <AuthProvider>

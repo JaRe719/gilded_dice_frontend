@@ -44,6 +44,7 @@
             text-align: end;
 
             li{
+                margin-bottom: 0.2rem;
                 font-size: 1.1rem;
                 list-style: none;
                 cursor: pointer;
@@ -55,26 +56,39 @@
         }
     }
 }
+
 .closeMenu{
     font-weight: bold;
     cursor: pointer;
     margin-top: 1.2rem;
 }
+
+.deleteProfileText{
+    background-color: transparent;
+    border: none;
+    font-size: 1.1rem;
+    color: darkred;
+
+}
+
 .buttonBoxMenu{
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 0.5rem;
     width: 100%;
 }
+
 .innerButton{
+    background: linear-gradient(to bottom right , #6F909F, #435B65, #2F3F46);
+    
     font-size: 0.6rem;
     word-wrap: normal;
-    padding: 5px;
-    background-color: #F1F3F4;
-    border: 1px solid #B8C2C6;
-    border-radius: 5%;
-    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    width: 48%;
+    padding: 6px;
+    color: #F1F3F4;
 }
 
 .actionMessageMenu{

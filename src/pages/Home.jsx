@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import "./Home.css";
-import { getAvatarPaths } from '../utils/AvatarProvider';
-import Navbar from '../components/Navbar/Navbar';
-import Dashboard from '../components/Dashboard/Dashboard';
 import { useNavigate } from 'react-router-dom';
+import Dashboard from '../components/Dashboard/Dashboard';
+import Navbar from '../components/Navbar/Navbar';
+import { getAvatarPaths } from '../utils/AvatarProvider';
+import "./Home.css";
 
 export default function Home() {
 
@@ -15,6 +15,8 @@ export default function Home() {
   const [charDetails, setCharDetails] = useState(null);
   const [token, setToken] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [playerHasGame, setPlayerHasGame] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
       const tokenFromStorage = sessionStorage.getItem("token");
@@ -62,7 +64,53 @@ useEffect(() => {
     return () => clearInterval(interval);
   }
 }, [chosenAvatar, avatars.length]);
+
+useEffect(()=> {
+  if(!isLoading && token){
+  fetch(`${process.env.REACT_APP_BACKEND}/api/v1/game/hasGame`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+    }
+  })
+  .then(response => {
+    
+    if (response.ok) {
+      return response.json();
+    } else {
+      setPlayerHasGame(false);
+    }
+  })
+  .then(data => {
+    setPlayerHasGame(data);
+  })
+  .catch(error => {
+    console.log("Error:", error);
+  });
+}}, [token, isLoading]);
  
+
+const handleGameReset = () => {
+  fetch(`${process.env.REACT_APP_BACKEND}/api/v1/game`, {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+    }
+  })
+  .then(response => {
+    if(response.ok) {
+      navigate("/gameplay")
+    } else {
+      setErrorMessage("Das hat nicht funktioniert, versuch es noch mal!")
+    }
+  })
+  .catch(error => {
+    console.log("Error:", error);
+  })
+}
+
 
   return (
     <div className='home'>
@@ -72,26 +120,41 @@ useEffect(() => {
 
       <Dashboard />
 
-      <div>
+        <div>
+          {
+            chosenAvatar ?
+              <div className='avatarWrapper' onClick={()=> navigate("/character")}>
+                <h4>Dein erstellter Charakter:</h4>
+                <div className='imgBox'>
+                  <img src={avatars[chosenAvatar]} alt="chosen avatar" />
+                </div>
+              </div>
+            :
+              <div className='avatarWrapper' onClick={()=> navigate("/character")}>
+                <h4>Erstelle jetzt einen Charakter</h4>
+                <div className='imgBox'>
+                  <img src={avatars[currentIndex]} alt="changing avatar" />
+                </div>
+              </div>
+          }
+        </div>
+      </div>
         {
-          chosenAvatar ?
-          <div className='avatarWrapper' onClick={()=> navigate("/character")}>
-            <h4>Dein erstellter Charakter:</h4>
-            <div className='imgBox'>
-              <img src={avatars[chosenAvatar]} alt="chosen avatar" />
+          playerHasGame ?
+            <div className='gameButtonsCase'>
+              <button className='gameButtons' onClick={handleGameReset}>Spiel neustarten</button>
+              <button className='gameButtons' onClick={()=>navigate("/gameplay")}>Spiel fortsetzen</button>
             </div>
-          </div>
           :
-          <div className='avatarWrapper' onClick={()=> navigate("/character")}>
-            <h4>Erstelle jetzt einen Charakter</h4>
-            <div className='imgBox'>
-              <img src={avatars[currentIndex]} alt="changing avatar" />
+            <div className='gameButtonsCase'>
+              <button className='gameButtons' onClick={()=>navigate("/gameplay")}>Spiel starten</button>
             </div>
-          </div>
         }
-      </div>
-      </div>
-      <button className='startButton' onClick={()=>navigate("/gameplay")}>Spiel starten</button>
+        {errorMessage && 
+        <p>
+          {errorMessage}
+        </p>
+        }
     </div>
   )
 }
